@@ -10,10 +10,12 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
     api = Api(app)
+
+    app.app_context().push()
     db.init_app(app)
 
-    from app.position.routes import positions
+    from app.employee.routes import employees
 
-    api.register_blueprint(positions)
+    api.register_blueprint(employees)
 
     return app

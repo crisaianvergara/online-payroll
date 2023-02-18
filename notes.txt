@@ -1,0 +1,43 @@
+{
+  "id": "EMP1234567",
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "johndoe@example.com",
+  "phone_number": "+1-555-555-5555",
+  "department": {
+    "id": "DEPT123",
+    "name": "Engineering",
+    "description": "The engineering department"
+  },
+  "job_title": "Software Engineer",
+  "manager": {
+    "id": "EMP9876543",
+    "name": "Jane Smith",
+    "email": "janesmith@example.com"
+  },
+  "hire_date": "2022-01-01",
+  "termination_date": null,
+  "salary": {
+    "amount": 75000,
+    "currency": "USD"
+  },
+  "tax_withholding": 0.2,
+  "direct_deposit": {
+    "bank_name": "ABC Bank",
+    "routing_number": "123456789",
+    "account_number": "987654321",
+    "account_type": "checking"
+  }
+}
+
+
+import random
+import string
+
+def generate_employee_id():
+    letters = string.ascii_uppercase
+    numbers = string.digits
+    random_letters = ''.join(random.choice(letters) for i in range(3))
+    random_numbers = ''.join(random.choice(numbers) for i in range(7))
+    return f"{random_letters}{random_numbers}"
+
