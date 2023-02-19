@@ -28,7 +28,7 @@ const useFetch = (url) => {
             setError(err.message);
           }
         });
-    }, 1000);
+    }, 100);
 
     return () => abortCont.abort();
   }, [url]);
@@ -36,9 +36,3 @@ const useFetch = (url) => {
 };
 
 export default useFetch;
-
-// useEffect(() => {
-//   fetch("/employee").then((response) =>
-//     response.json().then((data) => console.log(data))
-//   );
-// });

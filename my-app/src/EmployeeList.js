@@ -1,7 +1,12 @@
+import { Link } from "react-router-dom";
+
 const EmployeeList = ({ employees, title }) => {
   return (
     <div className="employee-list">
       <h2>{title}</h2>
+      <Link to="/add" className="btn btn-success">
+        Add Employee
+      </Link>
       <div className="employee-preview">
         <table className="table table table-striped">
           <thead>
@@ -11,6 +16,7 @@ const EmployeeList = ({ employees, title }) => {
               <th scope="col">Middle</th>
               <th scope="col">Last</th>
               <th scope="col">Email Address</th>
+              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -21,6 +27,9 @@ const EmployeeList = ({ employees, title }) => {
                 <td>{employee.middle_name}</td>
                 <td>{employee.last_name}</td>
                 <td>{employee.email}</td>
+                <td>
+                  <Link to={`/employee/${employee.id}`}>View</Link>
+                </td>
               </tr>
             ))}
           </tbody>
