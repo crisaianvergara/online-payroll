@@ -12,7 +12,7 @@ const Employee = () => {
       {error && <div>{error}</div>}
       {isPending && <div>Loading...</div>}
       {employees && (
-        <EmployeeList employees={employees} title="All employees!" />
+        <EmployeeList employees={employees} title="Employees List" />
       )}
     </div>
   );

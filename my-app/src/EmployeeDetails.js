@@ -1,4 +1,4 @@
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useFetch from "./useFetch";
 
 const EmployeeDetails = () => {
@@ -8,15 +8,7 @@ const EmployeeDetails = () => {
     error,
     isPending,
   } = useFetch("http://127.0.0.1:5000/employee/" + id);
-  const history = useHistory();
 
-  const handleDelete = () => {
-    fetch("http://127.0.0.1:5000/employee/" + employee.id, {
-      method: "DELETE",
-    }).then(() => {
-      history.push("/employee");
-    });
-  };
   return (
     <div className="employee-details">
       {error && <div>{error}</div>}
@@ -26,7 +18,6 @@ const EmployeeDetails = () => {
           <p>{employee.id}</p>
           <p>{employee.first_name}</p>
           <p>{employee.email}</p>
-          <button onClick={handleDelete}>Delete</button>
         </article>
       )}
     </div>

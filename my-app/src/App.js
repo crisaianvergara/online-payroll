@@ -9,9 +9,9 @@ import NotFound from "./NotFound";
 function App() {
   return (
     <Router>
-      <div className="App row mx-0 justify-content-between">
+      <div className="App row mx-0">
         <SideBar />
-        <div className="content col-md-9 px-0  pt-5">
+        <div className="content col-md-10 px-4  pt-5">
           <Switch>
             <Route exact path="/">
               <Home />
