@@ -24,7 +24,6 @@ const AddEmployee = () => {
       body: JSON.stringify(newEmployee),
     })
       .then(() => {
-        console.log("Employee Added");
         setIsPending(false);
         history.push("/employee");
       })
