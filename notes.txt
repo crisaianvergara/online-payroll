@@ -41,3 +41,9 @@ def generate_employee_id():
     random_numbers = ''.join(random.choice(numbers) for i in range(7))
     return f"{random_letters}{random_numbers}"
 
+
+
+npm i bootstrap axios react-router-dom
+npm i --save bootstrap jquery popper.js
+npm install react-bootstrap-icons --save
+
