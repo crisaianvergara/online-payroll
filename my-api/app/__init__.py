@@ -18,7 +18,11 @@ def create_app():
     db.init_app(app)
 
     from app.employee.routes import employees
+    from app.position.routes import positions
+    from app.schedule.routes import schedules
 
     api.register_blueprint(employees)
+    api.register_blueprint(positions)
+    api.register_blueprint(schedules)
 
     return app
