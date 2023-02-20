@@ -3,7 +3,7 @@ from flask_smorest import Blueprint, abort
 from app import db
 from app.models import ScheduleModel
 from app.schemas import ScheduleSchema
-from sqlalchemy.exc import IntegrityError, SQLAlchemyError
+from sqlalchemy.exc import SQLAlchemyError
 
 
 schedules = Blueprint("schedules", "schedules", description="Operations on schedules")
@@ -23,8 +23,6 @@ class ScheduleList(MethodView):
         try:
             db.session.add(schedule)
             db.session.commit()
-        except IntegrityError:
-            abort(400, message="Schedule already exists.")
         except SQLAlchemyError:
             abort(500, message="An error occurred creating the schedule.")
         return schedule
@@ -53,8 +51,6 @@ class Schedule(MethodView):
 
         try:
             db.session.commit()
-        except IntegrityError:
-            abort(400, message="Schedule already exists.")
         except SQLAlchemyError:
             abort(500, message="An error occurred creating the schedule.")
         return schedule

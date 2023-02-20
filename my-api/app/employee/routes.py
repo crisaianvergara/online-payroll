@@ -52,7 +52,14 @@ class Employee(MethodView):
             employee.first_name = employee_data["first_name"]
             employee.middle_name = employee_data["middle_name"]
             employee.last_name = employee_data["last_name"]
+            employee.address = employee_data["address"]
+            employee.birth_date = employee_data["birth_date"]
+            employee.contact_number = employee_data["contact_number"]
+            employee.gender = employee_data["gender"]
             employee.email = employee_data["email"]
+            employee.date_hired = employee_data["date_hired"]
+            employee.schedule_id = employee_data["schedule_id"]
+            employee.position_id = employee_data["position_id"]
 
         try:
             db.session.commit()

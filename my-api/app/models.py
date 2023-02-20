@@ -1,5 +1,4 @@
 from app import db
-from sqlalchemy.orm import relationship
 
 
 class EmployeeModel(db.Model):
@@ -14,22 +13,29 @@ class EmployeeModel(db.Model):
     contact_number = db.Column(db.String(15), nullable=False)
     gender = db.Column(db.String(10), nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
+    date_hired = db.Column(db.String(10), nullable=False)
 
-    schedule_id = db.Column(db.Integer, db.ForeignKey("schedules.id"))
-    schedule = relationship("ScheduleModel", back_populates="employees")
+    schedule_id = db.Column(
+        db.Integer, db.ForeignKey("schedules.id"), unique=False, nullable=False
+    )
+    schedule = db.relationship("ScheduleModel", back_populates="employees")
 
-    position_id = db.Column(db.Integer, db.ForeignKey("positions.id"))
-    position = relationship("PositionModel", back_populates="employees")
+    position_id = db.Column(
+        db.Integer, db.ForeignKey("positions.id"), unique=False, nullable=False
+    )
+    position = db.relationship("PositionModel", back_populates="employees")
 
 
 class ScheduleModel(db.Model):
     __tablename__ = "schedules"
 
     id = db.Column(db.Integer, primary_key=True)
-    time_in = db.Column(db.String(30), unique=True, nullable=False)
-    time_out = db.Column(db.String(30), unique=True, nullable=False)
+    time_in = db.Column(db.String(30), nullable=False)
+    time_out = db.Column(db.String(30), nullable=False)
 
-    employees = relationship("EmployeeModel", back_populates="schedule")
+    employees = db.relationship(
+        "EmployeeModel", back_populates="schedule", lazy="dynamic"
+    )
 
 
 class PositionModel(db.Model):
@@ -39,4 +45,6 @@ class PositionModel(db.Model):
     position = db.Column(db.String(50), unique=True, nullable=False)
     rate_per_hour = db.Column(db.Float, nullable=False)
 
-    employees = relationship("EmployeeModel", back_populates="position")
+    employees = db.relationship(
+        "EmployeeModel", back_populates="position", lazy="dynamic"
+    )
