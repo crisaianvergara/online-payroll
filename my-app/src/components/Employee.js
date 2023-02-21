@@ -1,5 +1,5 @@
 import EmployeeList from "./EmployeeList";
-import useFetch from "./useFetch";
+import useFetch from "../utils/useFetch";
 const Employee = () => {
   const {
     data: employees,

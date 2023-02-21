@@ -1,17 +1,19 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import SideBar from "./SideBar";
-import Home from "./Home";
-import Employee from "./Employee";
-import EmployeeDetails from "./EmployeeDetails";
-import AddEmployee from "./AddEmployee";
-import NotFound from "./NotFound";
+import Home from "./components/Home";
+import Employee from "./components/Employee";
+import EmployeeDetails from "./components/EmployeeDetails";
+import AddEmployee from "./components/AddEmployee";
+import NotFound from "./utils/NotFound";
+import NavBar from "./components/NavBar";
+import Aside from "./components/Aside";
 
 function App() {
   return (
     <Router>
-      <div className="App row mx-0">
-        <SideBar />
-        <div className="content col-md-10 px-4  pt-5">
+      <div className="App">
+        <NavBar />
+        <Aside />
+        <div className="content main" id="main">
           <Switch>
             <Route exact path="/">
               <Home />
